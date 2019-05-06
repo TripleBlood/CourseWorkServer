@@ -16,8 +16,10 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-public class RESTControllerExample {
+@RequestMapping("/android")
+public class CourseController {
     private static final String template = "Hello, %s!";
+
     private final AtomicLong counter = new AtomicLong();
 
     @Autowired
@@ -39,24 +41,22 @@ public class RESTControllerExample {
     private LessonProgressRepository lessonProgressRepository;
 
     @RequestMapping("/greeting")
-    public QSelectOutOfFour greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name,
-                             @RequestParam(value = "elf", required = false, defaultValue = "World") String sloan) {
-
+    public QSelectOutOfFour greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         long id = 1;
-        return qSelectOutOfFourRepository.findOne(id);
+        return qSelectOutOfFourRepository.findFirstById(id).orElse(null);
     }
 
     @Autowired
     UsersRepository usersRepository;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    @RequestMapping(value = "/android/andrLogin", method = RequestMethod.GET)
+    @RequestMapping(value = "/andrLogin", method = RequestMethod.GET)
     public User authUserByCredentials(@RequestParam(value = "login", required = true) String login,
                                       @RequestParam(value = "pass", required = true) String pass) {
-
-        Optional<User> result = usersRepository.findFirstByLogin(login);
         // System.out.println(passwordEncoder.matches(pass, result.get().getPass()));
         //System.out.println("I was here");
+        Optional<User> result = usersRepository.findFirstByLogin(login);
+
         if (result.isPresent()) {
 
             //System.out.println(result.get().getPass() + "___");
