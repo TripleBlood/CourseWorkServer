@@ -7,10 +7,7 @@ import ligai.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
@@ -40,15 +37,16 @@ public class CourseController {
     @Autowired
     private LessonProgressRepository lessonProgressRepository;
 
-    @RequestMapping("/greeting")
+    @Autowired
+    UsersRepository usersRepository;
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    @GetMapping("/greeting")
     public QSelectOutOfFour greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         long id = 1;
         return qSelectOutOfFourRepository.findFirstById(id).orElse(null);
     }
 
-    @Autowired
-    UsersRepository usersRepository;
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @RequestMapping(value = "/andrLogin", method = RequestMethod.GET)
     public User authUserByCredentials(@RequestParam(value = "login", required = true) String login,
