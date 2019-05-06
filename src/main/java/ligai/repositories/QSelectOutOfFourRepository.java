@@ -8,4 +8,6 @@ import java.util.Optional;
 
 public interface QSelectOutOfFourRepository extends JpaRepository<QSelectOutOfFour, Long> {
     Optional<QSelectOutOfFour> findFirstById(Long id);
+    Optional<QSelectOutOfFour> findFirstBy(Long id);
+
 }

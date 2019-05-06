@@ -20,7 +20,7 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String Task;
+    private String task;
     private String answerString;
 
     @Enumerated(EnumType.STRING)
