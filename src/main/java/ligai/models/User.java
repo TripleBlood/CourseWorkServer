@@ -1,7 +1,7 @@
 package ligai.models;
 
 import ligai.security.role.Role;
-import ligai.security.states.State;
+import ligai.security.state.State;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,7 +21,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String pass;
+    private String hashPassword;
 
     @Column(unique = true)
     private String login;

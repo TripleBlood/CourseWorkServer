@@ -38,7 +38,6 @@ public class UserRegistrationFormValidator implements Validator {
         }
         // проверяем на пустоту логин или пароль
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "empty.login", "Пустой логин");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "pass", "empty.pass", "Пустой пароль");
-
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "empty.password", "Пустой пароль");
     }
 }

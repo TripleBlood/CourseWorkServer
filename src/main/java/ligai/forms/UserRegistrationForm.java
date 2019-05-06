@@ -9,6 +9,6 @@ import lombok.*;
 public class UserRegistrationForm {
 
     private String login;
-    private String pass;
+    private String password;
 
 }

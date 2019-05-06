@@ -1,11 +1,9 @@
 package ligai.controllers;
 
-import ligai.enums.ProgressStatus;
 import ligai.enums.QuestionType;
 import ligai.models.*;
 import ligai.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -44,14 +42,14 @@ public class CourseController {
 
     @GetMapping("/greeting")
     public QSelectOutOfFour greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        long id = 1;
+        long id = 2;
         return qSelectOutOfFourRepository.findFirstById(id).orElse(null);
     }
 
     @GetMapping("/greeting/save")
     public QSelectOutOfFour saveRandom() {
         QSelectOutOfFour qSelectOutOfFour = QSelectOutOfFour.qSelectOutOfFourBuilder()
-                .task("Simple Task")
+                .task("Как перевести на английский слово 'Лиса'?")
                 .lesson(null)
                 .questionType(QuestionType.ONE_OUT_OF_FOUR)
                 .answerString("1")
@@ -68,11 +66,11 @@ public class CourseController {
 
     @GetMapping("/andLogin")
     public User authUserByCredentials(@RequestParam(value = "login") String login,
-                                      @RequestParam(value = "pass") String pass) {
+                                      @RequestParam(value = "hashPassword") String pass) {
         Optional<User> result = usersRepository.findFirstByLogin(login);
 
         if (result.isPresent()) {
-            if (passwordEncoder.matches(pass, result.get().getPass())) {
+            if (passwordEncoder.matches(pass, result.get().getHashPassword())) {
                 return result.get();
             }
         }
