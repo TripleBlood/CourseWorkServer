@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
+/**
+ * Контроллер, обрабатывающий все запросы на создание экземляров сущностей
+ */
 @RestController
 @RequestMapping("/save")
 public class AddController {
