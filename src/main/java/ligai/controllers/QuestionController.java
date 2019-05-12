@@ -1,10 +1,9 @@
 package ligai.controllers;
 
 import ligai.models.Lesson;
+import ligai.models.QPairs;
 import ligai.models.Question;
-import ligai.repositories.LessonRepository;
-import ligai.repositories.QSelectOutOfFourRepository;
-import ligai.repositories.QuestionRepository;
+import ligai.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +22,18 @@ public class QuestionController {
 
     @Autowired
     QuestionRepository questionRepository;
+
     @Autowired
     QSelectOutOfFourRepository qSelectOutOfFourRepository;
+    @Autowired
+    QPairsRepository qPairsRepository;
+    @Autowired
+    QGroupsRepository qGroupsRepository;
+    @Autowired
+    QSequenceUpdateRepository qSequenceUpdateRepository;
+    @Autowired
+    QAwayFromSequenceRepository qAwayFromSequenceRepository;
+
     @Autowired
     LessonRepository lessonRepository;
 
@@ -41,11 +50,26 @@ public class QuestionController {
 
                 List finalList = new ArrayList();
 
+                //TODO Pictures!!!
                 for (Question question : questionArrayList){
                     switch (question.getQuestionType()){
                         case ONE_OUT_OF_FOUR:
                         case MULTIPLE_OUT_OF_FOUR:
                             finalList.add(qSelectOutOfFourRepository.findFirstById(question.getId()).get());
+                            break;
+                        case PAIRS:
+                            finalList.add(qPairsRepository.findFirstById(question.getId()));
+                            break;
+                        case GROUP:
+                            finalList.add(qGroupsRepository.findFirstById(question.getId()));
+                        case SEQUENCE_INCERT_NOGAPS:
+                        case SEQUENCE_PRINT:
+                        case SEQUENCE_INCERT:
+                        case SEQUENCE:
+                            finalList.add(qSequenceUpdateRepository.findFirstById(question.getId()));
+                            break;
+                        case SEQUENCE_OUT:
+                            finalList.add(qAwayFromSequenceRepository.findFirstById(question.getId()));
                             break;
                         case TEXT:
                             finalList.add(question);
