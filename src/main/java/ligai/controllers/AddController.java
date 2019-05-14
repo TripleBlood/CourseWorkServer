@@ -33,7 +33,7 @@ public class AddController {
     @Autowired
     QSelectOutOfFourRepository qSelectOutOfFourRepository;
 
-    @GetMapping("/qSelectOutOfFour")
+    @GetMapping("/q-select-one-out-of-four")
     public QSelectOutOfFour saveQSelectOutOfFour(
             @RequestParam String task,
             @RequestParam String answerString,
