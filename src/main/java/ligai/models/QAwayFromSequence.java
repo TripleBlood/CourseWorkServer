@@ -21,7 +21,7 @@ public class QAwayFromSequence extends Question {
     private String mainSequence;
 
 
-    @Builder(builderMethodName = "qSelectOutOfFourBuilder")
+    @Builder(builderMethodName = "qAwayFromSequenceBuilder")
     public QAwayFromSequence(Long id,
                              String task,
                              String answerString,

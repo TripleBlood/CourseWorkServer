@@ -29,7 +29,7 @@ public class QPairs extends Question {
     private String pair3;
     private String pair4;
 
-    @Builder(builderMethodName = "qSelectOutOfFourBuilder")
+    @Builder(builderMethodName = "qPairsBuilder")
     public QPairs(Long id,
                   String task,
                   String answerString,
@@ -38,7 +38,11 @@ public class QPairs extends Question {
                   String variant1,
                   String variant2,
                   String variant3,
-                  String variant4) {
+                  String variant4,
+                  String pair1,
+                  String pair2,
+                  String pair3,
+                  String pair4) {
         super(id, task, answerString, questionType, lesson);
         this.variant1 = variant1;
         this.variant2 = variant2;

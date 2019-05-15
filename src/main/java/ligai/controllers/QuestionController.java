@@ -58,18 +58,18 @@ public class QuestionController {
                             finalList.add(qSelectOutOfFourRepository.findFirstById(question.getId()).get());
                             break;
                         case PAIRS:
-                            finalList.add(qPairsRepository.findFirstById(question.getId()));
+                            finalList.add(qPairsRepository.findFirstById(question.getId()).get());
                             break;
                         case GROUP:
-                            finalList.add(qGroupsRepository.findFirstById(question.getId()));
+                            finalList.add(qGroupsRepository.findFirstById(question.getId()).get());
                         case SEQUENCE_INCERT_NOGAPS:
                         case SEQUENCE_PRINT:
                         case SEQUENCE_INCERT:
                         case SEQUENCE:
-                            finalList.add(qSequenceUpdateRepository.findFirstById(question.getId()));
+                            finalList.add(qSequenceUpdateRepository.findFirstById(question.getId()).get());
                             break;
                         case SEQUENCE_OUT:
-                            finalList.add(qAwayFromSequenceRepository.findFirstById(question.getId()));
+                            finalList.add(qAwayFromSequenceRepository.findFirstById(question.getId()).get());
                             break;
                         case TEXT:
                             finalList.add(question);
