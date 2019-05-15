@@ -23,8 +23,15 @@ public class QSelectOutOfFour extends Question {
     private String variant4;
 
     @Builder(builderMethodName = "qSelectOutOfFourBuilder")
-    public QSelectOutOfFour(Long id, String task, String answerString, QuestionType questionType,
-                            Lesson lesson, String variant1, String variant2, String variant3, String variant4) {
+    public QSelectOutOfFour(Long id,
+                            String task,
+                            String answerString,
+                            QuestionType questionType,
+                            Lesson lesson,
+                            String variant1,
+                            String variant2,
+                            String variant3,
+                            String variant4) {
         super(id, task, answerString, questionType, lesson);
         this.variant1 = variant1;
         this.variant2 = variant2;

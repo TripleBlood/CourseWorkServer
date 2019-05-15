@@ -14,15 +14,15 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @Entity
 @Table(name = "q_groups")
-public class QGroups extends Question{
+public class QGroups extends Question {
 
-    String a_group_name;
-    String b_group_name;
+    private String a_group_name;
+    private String b_group_name;
 
-    String variant1;
-    String variant2;
-    String variant3;
-    String variant4;
+    private String variant1;
+    private String variant2;
+    private String variant3;
+    private String variant4;
 
     @Builder(builderMethodName = "qGroupsBuilder")
     public QGroups(

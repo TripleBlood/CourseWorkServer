@@ -14,11 +14,10 @@ import java.io.IOException;
 @RestController
 public class ImageController {
 
-    @GetMapping(value = "/img/{image-name}", produces = MediaType.IMAGE_JPEG_VALUE)
+    @GetMapping(value = "/img/{url}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public void getImage(HttpServletResponse response, @PathVariable("url") String parameter) throws IOException {
 
-    public void getImage(HttpServletResponse response, @PathVariable("image-name") String parameter) throws IOException {
-
-        var imgFile = new ClassPathResource("images/example/" + parameter + ".jpg");
+        var imgFile = new ClassPathResource("images/" + parameter);
 
         response.setContentType(MediaType.IMAGE_JPEG_VALUE);
         StreamUtils.copy(imgFile.getInputStream(), response.getOutputStream());

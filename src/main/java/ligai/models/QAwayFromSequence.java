@@ -1,8 +1,6 @@
 package ligai.models;
 
 import ligai.enums.QuestionType;
-import ligai.models.Lesson;
-import ligai.models.Question;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -24,8 +22,12 @@ public class QAwayFromSequence extends Question {
 
 
     @Builder(builderMethodName = "qSelectOutOfFourBuilder")
-    public QAwayFromSequence(Long id, String task, String answerString, QuestionType questionType,
-                           Lesson lesson, String mainSequence) {
+    public QAwayFromSequence(Long id,
+                             String task,
+                             String answerString,
+                             QuestionType questionType,
+                             Lesson lesson,
+                             String mainSequence) {
         super(id, task, answerString, questionType, lesson);
         this.mainSequence = mainSequence;
 

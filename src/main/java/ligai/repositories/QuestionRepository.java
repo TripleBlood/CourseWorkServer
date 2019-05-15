@@ -9,6 +9,5 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
-
     Optional<ArrayList<Question>> findAllByLesson(Lesson lesson);
 }

@@ -24,8 +24,13 @@ public class QSequenceUpdate extends Question {
     private String suggestedBlocks;
 
     @Builder(builderMethodName = "qSelectOutOfFourBuilder")
-    public QSequenceUpdate(Long id, String task, String answerString, QuestionType questionType,
-                           Lesson lesson, String mainSequence, String suggestedBlocks) {
+    public QSequenceUpdate(Long id,
+                           String task,
+                           String answerString,
+                           QuestionType questionType,
+                           Lesson lesson,
+                           String mainSequence,
+                           String suggestedBlocks) {
         super(id, task, answerString, questionType, lesson);
         this.mainSequence = mainSequence;
         this.suggestedBlocks = suggestedBlocks;
