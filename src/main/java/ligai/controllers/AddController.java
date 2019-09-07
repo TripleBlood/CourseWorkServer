@@ -212,7 +212,7 @@ public class AddController {
     public QAwayFromSequence saveQAwayFromSequence(@RequestParam String lessonName,
                                                    @RequestParam String task,
                                                    @RequestParam String answerString,
-                                                   @RequestParam String mainSequence) {
+                                                       @RequestParam String mainSequence) {
         Optional<Lesson> lesson = lessonRepository.findFirstByName(lessonName);
 
         if (lesson.isPresent()) {
